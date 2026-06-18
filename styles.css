@@ -6,6 +6,7 @@
   --paper-strong: #fffdf7;
   --line: #ded8cc;
   --cream: #f7efd8;
+  --header-offset: 148px;
   --max: 1180px;
 }
 
@@ -15,6 +16,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-offset);
 }
 
 body {
@@ -37,13 +39,15 @@ a {
 
 .site-header {
   align-items: center;
-  background: rgba(251, 247, 237, 0.94);
+  background: linear-gradient(var(--blue) 0 96px, var(--paper-strong) 96px);
   border-bottom: 1px solid var(--line);
   display: grid;
-  gap: 24px;
+  gap: 0 28px;
   grid-template-columns: 250px minmax(0, 1fr) auto;
+  grid-template-rows: 96px 52px;
   left: 0;
-  padding: 14px clamp(20px, 4vw, 56px);
+  min-height: 148px;
+  padding: 0 clamp(20px, 4vw, 56px);
   position: sticky;
   right: 0;
   top: 0;
@@ -51,8 +55,11 @@ a {
 }
 
 .brand {
-  background: var(--blue);
+  align-self: center;
+  background: transparent;
   display: block;
+  grid-column: 1;
+  grid-row: 1;
   height: 84px;
   overflow: hidden;
   width: 250px;
@@ -64,6 +71,21 @@ a {
   object-position: center 54%;
 }
 
+.masthead-note {
+  align-self: center;
+  color: rgba(247, 239, 216, 0.88);
+  font-size: 0.76rem;
+  font-weight: 700;
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
+  letter-spacing: 0.1em;
+  line-height: 1.25;
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .nav,
 .social-links {
   align-items: center;
@@ -73,12 +95,24 @@ a {
 }
 
 .nav {
+  align-self: stretch;
+  background: var(--paper-strong);
+  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  gap: clamp(22px, 3vw, 38px);
+  grid-column: 1 / -1;
+  grid-row: 2;
   justify-content: center;
+  margin: 0 calc(clamp(20px, 4vw, 56px) * -1);
+  min-height: 52px;
+  padding: 0 clamp(20px, 4vw, 56px);
 }
 
 .social-links {
-  color: var(--muted);
+  color: rgba(247, 239, 216, 0.8);
   font-size: 0.84rem;
+  grid-column: 3;
+  grid-row: 1;
   justify-content: flex-end;
   text-transform: uppercase;
 }
@@ -96,10 +130,22 @@ a {
   color: var(--blue);
 }
 
+.social-links a:hover {
+  border-color: var(--cream);
+  color: #ffffff;
+}
+
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid var(--blue);
   outline-offset: 4px;
+}
+
+#journal,
+#archive,
+#interiors,
+#about {
+  scroll-margin-top: var(--header-offset);
 }
 
 .section-shell {
@@ -113,7 +159,7 @@ button:focus-visible {
   display: grid;
   gap: clamp(32px, 5vw, 72px);
   grid-template-columns: minmax(0, 0.92fr) minmax(360px, 1.08fr);
-  min-height: calc(100vh - 101px);
+  min-height: calc(100vh - 148px);
 }
 
 .hero-copy {
@@ -365,18 +411,39 @@ p {
 }
 
 @media (max-width: 920px) {
+  :root {
+    --header-offset: 178px;
+  }
+
   .site-header {
-    grid-template-columns: 230px 1fr;
+    background: linear-gradient(var(--blue) 0 126px, var(--paper-strong) 126px);
+    gap: 0 20px;
+    grid-template-columns: 230px minmax(0, 1fr);
+    grid-template-rows: 88px 38px 52px;
+    min-height: 178px;
   }
 
   .brand {
+    grid-column: 1;
+    grid-row: 1;
     height: 78px;
     width: 230px;
   }
 
+  .masthead-note {
+    font-size: 0.68rem;
+    grid-column: 2;
+    grid-row: 1;
+  }
+
   .social-links {
     grid-column: 1 / -1;
+    grid-row: 2;
     justify-content: flex-start;
+  }
+
+  .nav {
+    grid-row: 3;
   }
 
   .hero,
@@ -400,17 +467,49 @@ p {
 }
 
 @media (max-width: 640px) {
+  :root {
+    --header-offset: 16px;
+  }
+
   .site-header {
+    background: var(--blue);
+    gap: 10px;
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    min-height: 0;
+    padding: 14px 20px 0;
     position: static;
   }
 
   .brand {
+    grid-column: 1;
+    grid-row: 1;
     height: 74px;
     width: min(100%, 260px);
   }
 
+  .masthead-note {
+    font-size: 0.68rem;
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+    max-width: 260px;
+    text-align: left;
+  }
+
+  .social-links {
+    grid-column: 1;
+    grid-row: 3;
+    justify-content: flex-start;
+    padding-bottom: 10px;
+  }
+
   .nav {
+    grid-column: 1;
+    grid-row: 4;
+    margin: 0 -20px;
+    min-height: auto;
+    padding: 12px 20px;
     justify-content: flex-start;
   }
 

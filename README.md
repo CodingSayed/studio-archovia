@@ -6,6 +6,7 @@ Studio Archovia is an English-language magazine-style home base for a curated ar
 
 - Spacious luxury editorial layout
 - Royal blue used as a restrained brand accent
+- Split magazine masthead with blue brand band and centered ivory navigation
 - Founder credit: Gratto Grattjoes, Founder & Curator
 - TikTok and LinkedIn growth focus
 - Placeholder article, archive, contact, and email content
@@ -13,6 +14,7 @@ Studio Archovia is an English-language magazine-style home base for a curated ar
 
 ## Pages / Sections
 
+- Sticky magazine masthead
 - Home hero
 - Featured editorial story
 - Journal / latest selections
@@ -41,3 +43,12 @@ For a local server:
 ```bash
 npx serve .
 ```
+
+## Current Checkpoint
+
+The current saved direction uses the approved split masthead:
+
+- Royal blue top band with logo, editorial label, and social links
+- Ivory navigation strip centered underneath
+- Smooth internal navigation handled by `main.js` so section anchors align with the masthead line
+- `experiments/` is ignored by Git and kept only for local visual trials
